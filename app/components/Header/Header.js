@@ -14,6 +14,7 @@ const Header = () => {
       <Button handleClick={() => logStuff()} />
     </div>
   );
+  
 }
 
 export default Header;
