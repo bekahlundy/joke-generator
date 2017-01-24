@@ -1,20 +1,16 @@
 import React from 'react';
-import './header-style';
-
 import Button from '../Button/Button';
 
-const logStuff = () => {
-  console.log("clicked!");
-}
-
 const Header = () => {
-  return (
+  return(
     <div className="header">
       <h1>Chuck Norris Joke Machine</h1>
-      <Button handleClick={() => logStuff()} />
-    </div>
-  );
-  
+      <Button
+        className='settings-btn'
+        onClick={() => console.log('cleek')}
+        text='settings'/>
+      </div>
+  )
 }
 
 export default Header;
