@@ -1,16 +1,18 @@
 import React from 'react';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
+import Joke from '../Joke/Joke';
 
 export default class Display extends React.Component {
 
   getJokes() {
-    console.log('got a joke')
+    console.log('joke')
   }
-  
+
   render() {
     return(
       <div>
+        <Joke />
         <Button
           className='get-jokes-btn'
           onClick={this.getJokes.bind(this)}
