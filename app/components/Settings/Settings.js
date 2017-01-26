@@ -27,6 +27,7 @@ const Settings = () => {
           name='parental'
           className='off-btn'
           type='radio'
+          defaultChecked={true}
           onChange={() => console.log('off')}/>
     </div>
   )
