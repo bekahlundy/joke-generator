@@ -1,23 +1,18 @@
 import React from 'react';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
+
 export default class Settings extends React.Component {
   constructor() {
     super()
     this.state = {
       name: '',
-      firstName: '',
-      lastName: ''
     }
   }
   setName(e) {
     this.setState({ name: e.target.value })
   }
-  clickSet() {
-    let name = this.state.name
-    this.setState({ firstName: name.split(" ")[0] })
-    this.setState({ lastName: name.split(" ")[1] })
-  }
+
   render() {
     return (
       <div>
@@ -29,7 +24,7 @@ export default class Settings extends React.Component {
           <Button
             className='set-btn'
             text='Set'
-            onClick={this.clickSet.bind(this)}/>
+            onClick={() => this.props.clickSet(this.state.name)}/>
             <Button
               className='reset-btn'
               text='Reset'

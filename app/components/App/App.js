@@ -10,9 +10,12 @@ export default class App extends React.Component {
     super()
     this.state = {
       jokes: [],
+      firstName: '',
+      lastName: '',
       }
+
   }
-  
+
   //   fetchJokes() {
   //     fetch(`http://api.icndb.com/jokes/random/${this.state.num}?escape=javascript`)
   //        .then((response) => response.json())
@@ -21,16 +24,22 @@ export default class App extends React.Component {
   //        )
   //        console.log(this.state.num)
   //   }
+  clickSet(name) {
+    this.setState({ firstName: name.split(" ")[0] })
+    this.setState({ lastName: name.split(" ")[1] })
+  }
+
   render() {
-    // const Children = React.cloneElement(this.props.children, {
-    //   getJokes: this.fetchJokes.bind(this),
-    // })
+    const Children = React.cloneElement(this.props.children, {
+      clickSet: this.clickSet.bind(this),
+    })
+
     return (
       <div>
         <Header />
         <SingleJoke />
         {/* <JokeContainer /> */}
-        {this.props.children}
+        {Children}
       </div>
     );
 
