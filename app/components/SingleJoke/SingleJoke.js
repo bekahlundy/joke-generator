@@ -1,11 +1,28 @@
 import React from 'react';
 
-const SingleJoke = () => {
-  return(
-    <div>
-      single joke
-    </div>
-  )
-}
+export default class SingleJoke extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      singleJoke: ''
+    }
+  }
+  componentDidMount(){
+    fetch('http://api.icndb.com/jokes/random')
+      .then((stuff) => stuff.json())
+      .then((moreStuff) => this.APIScrubber(moreStuff.value.joke))
+      .then((moreMoreStuff) => this.setState({singleJoke: moreMoreStuff}));
+  }
 
-export default SingleJoke;
+  APIScrubber(api){
+    let scrubbed = api.replace(/&quot;/g, '"');
+    return scrubbed;
+  }
+  render() {
+    return(
+      <div>
+        <p>{this.state.singleJoke}</p>
+      </div>
+    )
+  }
+}

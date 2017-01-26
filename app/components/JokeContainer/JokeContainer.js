@@ -3,6 +3,7 @@ import Button from '../Button/Button';
 import SingleJoke from '../SingleJoke/SingleJoke';
 import Input from '../Input/Input';
 import JokeCard from '../JokeCard/JokeCard';
+import { Link } from 'react-router';
 
 export default class JokeContainer extends React.Component{
   constructor() {
@@ -12,12 +13,6 @@ export default class JokeContainer extends React.Component{
       num: 0
     }
   }
-  // componentDidMount() {
-  //   fetch('http://api.icndb.com/jokes/random/')
-  //     .then((data) => data.json())
-  //     .then((scrub) => this.APIScrubber(scrub.value.joke))
-  //     .then((joke) => this.setState({ joke: joke }))
-  // }
 
    getJokes() {
      fetch(`http://api.icndb.com/jokes/random/${this.state.num}?escape=javascript`)
@@ -37,12 +32,13 @@ export default class JokeContainer extends React.Component{
       let display = this.state.num === 0 ? welcome : this.state.jokes.map((joke) => <JokeCard joke = {joke}/>)
       return(
         <div>
-          <SingleJoke />
           <h1>{this.state.joke}</h1>|
+          <Link to={'/jokes'}>
           <Button
             className='get-jokes-btn'
             onClick={this.getJokes.bind(this)}
             text='Get Jokes'/>
+          </Link>
           <Input
             className='input'
             onChange={this.handleChange.bind(this)}

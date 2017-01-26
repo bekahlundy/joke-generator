@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 import ReactDOM from 'react-dom';
-import App from './components/App/App';
+import Path from './components/Path/Path';
 import './styles';
-import { Router, browserHistory, Route, IndexRoute } from 'react-router';
+// import { Router, browserHistory, Route, IndexRoute } from 'react-router';
 // import Articles from ./components/articles
 // import {ToDoList} from './componeents/todolist'
 // import Home
@@ -14,8 +14,4 @@ import { Router, browserHistory, Route, IndexRoute } from 'react-router';
 
 
 ReactDOM.render(
-  <Router history={browserHistory}>
-    <Route path='/' component={App} >
-    </Route>
-  </Router>
-  , document.querySelector('.application'));
+  <Path />, document.querySelector('.application'));
