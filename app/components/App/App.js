@@ -4,6 +4,7 @@ import './app-style';
 import Header from '../Header/Header';
 import JokeContainer from '../JokeContainer/JokeContainer';
 import SingleJoke from '../SingleJoke/SingleJoke';
+import Settings from '../Settings/Settings';
 
 export default class App extends React.Component {
   constructor() {
@@ -12,8 +13,10 @@ export default class App extends React.Component {
       jokes: [],
       firstName: '',
       lastName: '',
-      num: 0
-      }
+      num: 0,
+      parentalControl: false,
+      name: ''
+    }
   }
 
   clickSet(name) {
@@ -34,12 +37,27 @@ export default class App extends React.Component {
        this.setState({ num: e.target.value })
      }
 
+     parentalControlOn() {
+       this.setState({ parentalControl: true })
+     }
+
+     parentalControlOff() {
+       this.setState({ parentalControl: false })
+     }
+     
+     setName(e) {
+       this.setState({ name: e.target.value})
+     }
+
      childCheck(){
         return(
           React.cloneElement(this.props.children, {
             clickSet: this.clickSet.bind(this),
             getJokes: this.getJokes.bind(this),
             num: this.num.bind(this),
+            setName: this.setName.bind(this),
+            parentalControlOn: this.parentalControlOn.bind(this),
+            parentalControlOff: this.parentalControlOff.bind(this),
             state: this.state
           })
         )
