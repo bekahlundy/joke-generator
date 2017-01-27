@@ -14,7 +14,6 @@ export default class App extends React.Component {
       lastName: '',
       num: 0
       }
-
   }
 
   clickSet(name) {
@@ -23,7 +22,7 @@ export default class App extends React.Component {
   }
 
   getJokes(num) {
-    fetch(`http://api.icndb.com/jokes/random/${this.state.num}?escape=javascript`)
+    fetch(`http://api.icndb.com/jokes/random/${this.state.num}?escape=javascript&firstName=${this.state.firstName}&lastName=${this.state.lastName}`)
        .then((response) => response.json())
        .then((data) => data.value.map(obj => obj.joke))
        .then(array => this.setState({ jokes: array })
@@ -51,8 +50,6 @@ export default class App extends React.Component {
       <div>
         <Header />
         <SingleJoke />
-        {/* <JokeContainer /> */}
-        {/* {Children} */}
         {this.childCheck()}
       </div>
     );

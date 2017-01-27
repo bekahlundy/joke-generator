@@ -6,7 +6,7 @@ import JokeCard from '../JokeCard/JokeCard';
 import { Link } from 'react-router';
 
 const JokeContainer = (props) => {
-  console.log(props);
+
     let welcome = (<div>Click to get jokes!</div>)
     let display = props.state.num === 0 ? welcome : props.state.jokes.map((joke) => <JokeCard joke = {joke}/>)
     return(
@@ -33,17 +33,3 @@ const JokeContainer = (props) => {
 }
 
 export default JokeContainer;
-
-
-  //  getJokes() {
-  //    fetch(`http://api.icndb.com/jokes/random/${props.state.num}?escape=javascript`)
-  //       .then((response) => response.json())
-  //       .then((data) => data.value.map(obj => obj.joke))
-  //       .then(array => props.setState({ jokes: array })
-  //       )
-  //       console.log(props.state.num)
-  //     }
-
-  //  num(e) {
-  //    props.setState({ num: e.target.value })
-  //  }
