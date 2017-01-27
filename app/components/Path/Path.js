@@ -4,6 +4,7 @@ import App from '../App/App';
 import JokeCard from '../JokeCard/JokeCard'
 import JokeContainer from '../JokeContainer/JokeContainer';
 import Settings from '../Settings/Settings';
+import Favorites from '../Favorites/Favorites';
 
 const Path = () => {
   return (
@@ -15,6 +16,8 @@ const Path = () => {
         </Route>
         <Route path='/settings'
         component={Settings}/>
+        <Route path='/favorites'
+        component={Favorites}/>
       </Route>
     </Router>
   );

@@ -11,11 +11,12 @@ export default class App extends React.Component {
     super()
     this.state = {
       jokes: [],
-      firstName: '',
-      lastName: '',
+      firstName: 'Chuck',
+      lastName: 'Norris',
       num: 0,
       parentalControl: false,
-      name: ''
+      name: '',
+      favorites: []
     }
   }
 
@@ -25,7 +26,8 @@ export default class App extends React.Component {
   }
 
   getJokes(num) {
-    fetch(`http://api.icndb.com/jokes/random/${this.state.num}?escape=javascript&firstName=${this.state.firstName}&lastName=${this.state.lastName}`)
+    let parentalControl = this.state.parentalControl ? '&exclude=[explicit]' : ''
+    fetch(`http://api.icndb.com/jokes/random/${this.state.num}?escape=javascript&firstName=${this.state.firstName}&lastName=${this.state.lastName}parentalControl`)
        .then((response) => response.json())
        .then((data) => data.value.map(obj => obj.joke))
        .then(array => this.setState({ jokes: array })
@@ -44,9 +46,12 @@ export default class App extends React.Component {
      parentalControlOff() {
        this.setState({ parentalControl: false })
      }
-     
+
      setName(e) {
        this.setState({ name: e.target.value})
+     }
+     pushToFavorites(joke) {
+       console.log('pushed to fav')
      }
 
      childCheck(){
@@ -58,6 +63,7 @@ export default class App extends React.Component {
             setName: this.setName.bind(this),
             parentalControlOn: this.parentalControlOn.bind(this),
             parentalControlOff: this.parentalControlOff.bind(this),
+            pushToFavorites: this.pushToFavorites.bind(this),
             state: this.state
           })
         )

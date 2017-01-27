@@ -6,9 +6,11 @@ import JokeCard from '../JokeCard/JokeCard';
 import { Link } from 'react-router';
 
 const JokeContainer = (props) => {
+  console.log(props);
 
     let welcome = (<div>Click to get jokes!</div>)
-    let display = props.state.num === 0 ? welcome : props.state.jokes.map((joke) => <JokeCard joke = {joke}/>)
+    let display = props.state.num === 0 ? welcome : props.state.jokes.map((joke) => <JokeCard joke = {joke}
+              pushToFavorites={props.pushToFavorites}/>)
     return(
       <div>
         <h1>{props.state.joke}</h1>|
@@ -23,10 +25,12 @@ const JokeContainer = (props) => {
           onChange={(e) => props.num(e)}
           placeholder='Enter'
           type='number'/>
+          <Link to={'/favorites'}>
         <Button
           className='favorites-btn'
           onClick={() => console.log('favorites')}
           text='Favorites'/>
+        </Link>
           <div>{display}</div>
       </div>
   )

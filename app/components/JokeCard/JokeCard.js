@@ -1,15 +1,16 @@
 import React from 'react';
 import Button from '../Button/Button'
 import './jokecard-styles.css'
+import { Link } from 'react-router';
 
-const JokeCard = ({joke}) => {
+const JokeCard = (props) => {
   return (
 
       <section>
-        <p>{joke}</p>
+        <p>{props.joke}</p>
         <Button
           className='favorite-button'
-          onClick={() => console.log('fav')}/>
+          onClick={() => props.pushToFavorites(props.joke)}/>
       </section>
 
   )
