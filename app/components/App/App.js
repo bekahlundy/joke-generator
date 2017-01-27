@@ -12,34 +12,48 @@ export default class App extends React.Component {
       jokes: [],
       firstName: '',
       lastName: '',
+      num: 0
       }
 
   }
 
-  //   fetchJokes() {
-  //     fetch(`http://api.icndb.com/jokes/random/${this.state.num}?escape=javascript`)
-  //        .then((response) => response.json())
-  //        .then((data) => data.value.map(obj => obj.joke))
-  //        .then(array => this.setState({ jokes: array })
-  //        )
-  //        console.log(this.state.num)
-  //   }
   clickSet(name) {
     this.setState({ firstName: name.split(" ")[0] })
     this.setState({ lastName: name.split(" ")[1] })
   }
 
-  render() {
-    const Children = React.cloneElement(this.props.children, {
-      clickSet: this.clickSet.bind(this),
-    })
+  getJokes(num) {
+    fetch(`http://api.icndb.com/jokes/random/${this.state.num}?escape=javascript`)
+       .then((response) => response.json())
+       .then((data) => data.value.map(obj => obj.joke))
+       .then(array => this.setState({ jokes: array })
+       )
+       console.log(this.state.num)
+     }
 
+     num(e) {
+       this.setState({ num: e.target.value })
+     }
+
+     childCheck(){
+        return(
+          React.cloneElement(this.props.children, {
+            clickSet: this.clickSet.bind(this),
+            getJokes: this.getJokes.bind(this),
+            num: this.num.bind(this),
+            state: this.state
+          })
+        )
+     }
+
+  render() {
     return (
       <div>
         <Header />
         <SingleJoke />
         {/* <JokeContainer /> */}
-        {Children}
+        {/* {Children} */}
+        {this.childCheck()}
       </div>
     );
 
