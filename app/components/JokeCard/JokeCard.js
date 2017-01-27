@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../Button/Button'
-import './jokecard-styles.css'
+import './jokecard-styles.scss'
 import { Link } from 'react-router';
 
 const JokeCard = (props) => {
@@ -10,6 +10,7 @@ const JokeCard = (props) => {
         <p>{props.joke}</p>
         <Button
           className='favorite-button'
+          text='★'
           onClick={() => props.pushToFavorites(props.joke)}/>
       </section>
 

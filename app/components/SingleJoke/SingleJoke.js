@@ -1,4 +1,5 @@
 import React from 'react';
+import './singlejoke-style';
 
 export default class SingleJoke extends React.Component {
   constructor() {
@@ -21,7 +22,7 @@ export default class SingleJoke extends React.Component {
   render() {
     return(
       <div>
-        <p>{this.state.singleJoke}</p>
+        <p className='single-joke'>{this.state.singleJoke}</p>
       </div>
     )
   }

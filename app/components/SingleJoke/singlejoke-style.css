@@ -1,0 +1,9 @@
+.single-joke {
+  border: 1px dotted white;
+  border-radius: 5px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  width: 80%;
+  margin: 20px auto;
+}
