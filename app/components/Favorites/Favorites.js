@@ -1,12 +1,15 @@
 // import './favorites-style';
 import React from 'react';
-// import Home from '../Home/Home';
-// import JokeCard from '../JokeCard/JokeCard';
+import Button from '../Button/Button';
+import JokeCard from '../JokeCard/JokeCard';
 
-const Favorites = () => {
+const Favorites = (props) => {
+  console.log(props.state.favorites)
+  let display =props.state.favorites.map((joke) => <JokeCard joke = {joke}
+    pushToFavorites={props.pushToFavorites}/>)
   return(
     <div>
-      fuck
+      <p>{display}</p>
     </div>
   )
 }

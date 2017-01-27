@@ -50,10 +50,11 @@ export default class App extends React.Component {
      setName(e) {
        this.setState({ name: e.target.value})
      }
+
      pushToFavorites(joke) {
        let updatedArray = this.state.favorites.slice()
-updatedArray.push(joke)
-this.setState({ favorites: updatedArray })
+       updatedArray.push(joke)
+       this.setState({ favorites: updatedArray })
      }
 
      childCheck(){
